@@ -1,37 +1,67 @@
 import React from "react";
 import s from './Sidebar.module.sass';
 import logo from '@/shared/Logo';
-import {dashboardIcon} from '@/shared/icons/index'
+import {
+    dashboardIcon,
+    userIcon,
+    walletIcon,
+    moonIcon,
+    settingsIcon,
+    analyticsIcon,
+    shieldIcon, helpIcon
+} from '@/shared/icons/index'
+import {NavLink} from "react-router-dom";
+import ThemeToggleButton from "../../../features/theme-toggle/ui/ThemeToggleButton";
 
 const Sidebar: React.FC = () => {
+   const handleActive = ({ isActive }: { isActive: boolean }) => isActive ? s.activeTab : ""
+    const navItems = [
+        {
+            name: "Dashboard",
+            icon: dashboardIcon,
+            path: "/dashboard",
+        },
+        {
+            name: "Settings",
+            icon: settingsIcon,
+            path: "/settings",
+        },
+        {
+            name: "Analytics",
+            icon: analyticsIcon,
+            path: "/analytics",
+        },
+        {
+            name: "My Wallet",
+            icon: walletIcon,
+            path: "/wallet",
+        },
+        {
+            name: "Accounts",
+            icon: userIcon,
+            path: "/accounts",
+        }
+    ]
     return (
-        <div className={s.sidebar}>
-            <div>
+        <nav className={s.sidebar}>
+            <NavLink to="/" >
                 <img src={logo} alt="logotype"/>
                 <span className={s.logoTitle}>coc.</span>
-            </div>
-            <div className={s.activeTab}>
-                <img src={dashboardIcon} alt="icon"/>
-                <div>Dashboard</div>
-            </div>
-            <div>
-                <img src={dashboardIcon} alt="icon"/>
-                <div>Analytics</div>
-            </div>
-            <div>
-                <img src={dashboardIcon} alt="icon"/>
-                <div>My Wallet</div>
-            </div>
-            <div>
-                <img src={dashboardIcon} alt="icon"/>
-                <div>Accounts</div>
-            </div>
-            <div>
-                <img src={dashboardIcon} alt="icon"/>
-                <div>Settings</div>
-            </div>
-
-        </div>
+            </NavLink>
+            {navItems.map((item, index) => (
+                <NavLink to={item.path}
+                key={index}
+                className={handleActive}
+                >
+                    <img src={item.icon} alt="logotype"/>
+                    {item.name}
+                </NavLink>
+            ))}
+            < hr className={s.customLine} />
+            <NavLink to="/security" className={handleActive}><img src={shieldIcon} alt="logotype" />Security</NavLink>
+            <NavLink to="/help" className={handleActive}><img src={helpIcon} alt="logotype"/>Help Centre</NavLink>
+            Dark Mode <ThemeToggleButton />
+        </nav>
     )
 }
 

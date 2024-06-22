@@ -1,22 +1,45 @@
 @import 'src/shared/styles/global'
-
 .sidebar
   width: 260px
-  height: 830px
+  height: 100vh
   border-top-right-radius: 20px
   border-bottom-right-radius: 20px
   background: $primary-blue-dark
-  font-weight: bold
+  font-weight: normal
   font-size: 16px
+  display: flex
+  gap: 10px
+  flex-direction: column
+  align-items: center
+
+  a
+    display: flex
+    align-items: center
+    gap: 10px
+    color: white
+    text-decoration: none
+    padding: 10px
+    font-size: 18px
+    width: calc(100% - 26px)
+    box-sizing: border-box
+    transition: background 0.7s ease, color 0.5s ease
+
+    &.activeTab
+      background: $main-blue-dark
+      border-radius: 10px
+      @mixin flex-center
+      font-weight: bold
+      transition: background 0.7s ease, color 0.5s ease
 
 
+  .logoTitle
+      font-size: 56px
+      font-weight: bolder
 
-.activeTab
-  background: $main-blue-dark
-  width: 220px
-  height: 50px
-  border-radius: 10px
+hr.customLine
+  width: 90%
+  height: 1px
+  background-color: $main-blue-dark
+  border: none
+  margin: 20px auto
 
-.logoTitle
-  font-size: 56px
-  font-weight: bolder
