@@ -6,5 +6,7 @@ import userIcon from './user.svg';
 import walletIcon from './wallet.svg';
 import shieldIcon from './shield.svg';
 import helpIcon from './help.svg';
+import handIcon from './hand.svg';
+import masterIcon from './master.svg';
 
-export { dashboardIcon, analyticsIcon, settingsIcon, userIcon, walletIcon, moonIcon, shieldIcon, helpIcon };
+export { dashboardIcon, analyticsIcon, settingsIcon, userIcon, walletIcon, moonIcon, shieldIcon, helpIcon, handIcon, masterIcon };

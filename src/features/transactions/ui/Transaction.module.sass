@@ -1,0 +1,33 @@
+@import 'src/shared/styles/global'
+
+.transactionContainer
+  display: flex
+  flex-direction: column
+  gap: 10px
+  background: $primary-blue-dark
+  border-radius: 20px
+  padding: 20px
+
+.filterContainer
+  display: flex
+  gap: 10px
+
+.searchInput, .dateInput
+  padding: 5px
+  border: 1px solid #ccc
+  border-radius: 5px
+
+.transactionList
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.transactionItem
+  display: flex
+  justify-content: space-between
+  padding: 10px
+  border: 1px solid #ccc
+  border-radius: 5px
+
+.transactionName, .transactionDate, .transactionAmount, .transactionStatus
+  flex: 1
