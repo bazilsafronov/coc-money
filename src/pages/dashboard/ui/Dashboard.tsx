@@ -6,6 +6,7 @@ import {handIcon} from "@/shared/icons";
 import Transaction from "@/features/transactions/ui/Transaction";
 import styles from './Dashboard.module.sass'
 import WalletCard from "@/widgets/card-wallet/ui/WalletCard";
+import CategoryChart from "@/features/category/CategoryChart";
 
 const Dashboard = () => {
     const handleManageCards = () => {
@@ -23,6 +24,7 @@ const Dashboard = () => {
             <AnalyticsCard />
             <WalletCard balance={330.580} cardNumber="4400 3879 9824 0009" issueDate="09/25" onManageCards={handleManageCards} onTransfer={handleTransfer} />
             <Transaction name="Sample Transaction" date="2023-01-01" amount={100} status="Completed" />
+            <CategoryChart />
         </div>
     )
 }
