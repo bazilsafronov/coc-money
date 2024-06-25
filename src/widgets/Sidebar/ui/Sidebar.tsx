@@ -12,6 +12,8 @@ import {
 } from '@/shared/icons/index'
 import {NavLink} from "react-router-dom";
 import ThemeToggleButton from "../../../features/theme-toggle/ui/ThemeToggleButton";
+import UserAvatar from "@/entities/user/ui/UserAvatar";
+import imageAvatar from "@/shared/icons/avatar.png";
 
 const Sidebar: React.FC = () => {
    const handleActive = ({ isActive }: { isActive: boolean }) => isActive ? s.activeTab : ""
@@ -61,6 +63,8 @@ const Sidebar: React.FC = () => {
             <NavLink to="/security" className={handleActive}><img src={shieldIcon} alt="logotype" />Security</NavLink>
             <NavLink to="/help" className={handleActive}><img src={helpIcon} alt="logotype"/>Help Centre</NavLink>
             Dark Mode <ThemeToggleButton />
+
+            <UserAvatar firstName={'Bazil'} lastName={''} position={'Software Developer'} avatarUrl={imageAvatar} />
         </nav>
     )
 }

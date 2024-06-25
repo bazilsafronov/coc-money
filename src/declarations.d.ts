@@ -13,4 +13,22 @@ declare module '*.module.sass' {
     export default classes;
 }
 
-declare module '*.svg'
+declare module '*.png' {
+    const value: string;
+    export default value;
+}
+
+declare module '*.jpg' {
+    const value: string;
+    export default value;
+}
+
+declare module '*.jpeg' {
+    const value: string;
+    export default value;
+}
+
+declare module '*.svg' {
+    const value: string;
+    export default value;
+}

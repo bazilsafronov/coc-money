@@ -28,53 +28,51 @@ const Transaction:React.FC<TransactionProps> = ( { name, date, amount, status } 
         transaction.name.includes(searchQuery) &&
         transaction.date.includes(filterDate)
     );
-
-    return (
-        <div className={styles.transactionContainer}>
-            <h2>Transaction</h2>
-            <div className={styles.filterContainer}>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    className={styles.searchInput}
-                />
-                <input
-                    type="date"
-                    value={filterDate}
-                    onChange={handleFilterDateChange}
-                    className={styles.dateInput}
-                />
-            </div>
-            <div className={styles.transactionList}>
-                <div className={styles.transactionList}>
-                    <div >
-                        <span>Name</span>
-                    </div>
-                    <div>
-                        <span>Date</span>
-                    </div>
-                    <div>
-                        <span>Amount</span>
-                    </div>
-                    <div>
-                        <span>Status</span>
-                    </div>
-                </div>
-
-
-                {filteredTransactions.map((transaction, index) => (
-                    <div key={index} className={styles.transactionItem}>
-                        <span className={styles.transactionName}>{transaction.name}</span>
-                        <span className={styles.transactionDate}>{transaction.date}</span>
-                        <span className={styles.transactionAmount}>${transaction.amount}</span>
-                        <span className={styles.transactionStatus}>{transaction.status}</span>
-                    </div>
-                ))}
-            </div>
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            weekday: 'short',
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+        });
+    };
+return (
+    <div className={styles.transactionContainer}>
+        <h2>Transactions</h2>
+        <div className={styles.filterContainer}>
+            <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
+            <input
+                type="date"
+                value={filterDate}
+                onChange={handleFilterDateChange}
+                className={styles.dateInput}
+            />
         </div>
-    );
+        <div className={styles.transactionList}>
+            <div className={styles.transactionHeader}>
+                <span>Name</span>
+                <span>Date</span>
+                <span>Amount</span>
+                <span>Status</span>
+            </div>
+            {filteredTransactions.map((transaction, index) => (
+                <div key={index} className={styles.transactionItem}>
+                    <span className={styles.transactionName}>{transaction.name}</span>
+                    <span className={styles.transactionDate}>{formatDate(transaction.date)}</span>
+                    <span className={styles.transactionAmount}>${transaction.amount}</span>
+                    <span className={styles.transactionStatus}>{transaction.status}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+);
 };
 
 export default Transaction;

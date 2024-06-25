@@ -7,6 +7,8 @@
   background: $primary-blue-dark
   border-radius: 20px
   padding: 20px
+  width: 660px
+  color: #fff
 
 .filterContainer
   display: flex
@@ -22,11 +24,17 @@
   flex-direction: column
   gap: 10px
 
-.transactionItem
+.transactionHeader
   display: flex
   justify-content: space-between
   padding: 10px
-  border: 1px solid #ccc
+  border-radius: 5px
+  font-weight: bold
+
+.transactionItem
+  display: flex
+  justify-content: flex-start
+  padding: 10px
   border-radius: 5px
 
 .transactionName, .transactionDate, .transactionAmount, .transactionStatus
