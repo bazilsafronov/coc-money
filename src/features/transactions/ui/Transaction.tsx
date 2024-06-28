@@ -11,6 +11,7 @@ interface TransactionProps {
 const Transaction:React.FC<TransactionProps> = ( { name, date, amount, status } ) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filterDate, setFilterDate] = useState('');
+    const [filteredTransactions, setFilteredTransactions] = useState([]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value);
     const handleFilterDateChange = (e: React.ChangeEvent<HTMLInputElement>) => setFilterDate(e.target.value);
@@ -24,10 +25,14 @@ const Transaction:React.FC<TransactionProps> = ( { name, date, amount, status } 
         { name: 'Adobe After Effect', date: '2023-01-05', amount: 200, status: 'Return' },
     ];
 
-    const filteredTransactions = transactions.filter(transaction =>
-        transaction.name.includes(searchQuery) &&
-        transaction.date.includes(filterDate)
-    );
+    React.useEffect(() => {
+        if(searchQuery.length >= 3) {
+            setFilteredTransactions(transactions.filter(transaction => transaction.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )) } else {
+            setFilteredTransactions(transactions);
+        }
+    }, [searchQuery]);
+
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
@@ -39,8 +44,9 @@ const Transaction:React.FC<TransactionProps> = ( { name, date, amount, status } 
     };
 return (
     <div className={styles.transactionContainer}>
-        <h2>Transactions</h2>
+
         <div className={styles.filterContainer}>
+            <h2>Transactions</h2>
             <input
                 type="text"
                 placeholder="Search..."
@@ -62,14 +68,14 @@ return (
                 <span>Amount</span>
                 <span>Status</span>
             </div>
-            {filteredTransactions.map((transaction, index) => (
+            {filteredTransactions.length === 0 ? (<div>No transactions found</div>) : (filteredTransactions.map((transaction, index) => (
                 <div key={index} className={styles.transactionItem}>
                     <span className={styles.transactionName}>{transaction.name}</span>
                     <span className={styles.transactionDate}>{formatDate(transaction.date)}</span>
                     <span className={styles.transactionAmount}>${transaction.amount}</span>
                     <span className={styles.transactionStatus}>{transaction.status}</span>
                 </div>
-            ))}
+            )))}
         </div>
     </div>
 );

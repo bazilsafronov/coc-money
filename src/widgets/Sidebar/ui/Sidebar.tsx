@@ -62,7 +62,7 @@ const Sidebar: React.FC = () => {
             < hr className={s.customLine} />
             <NavLink to="/security" className={handleActive}><img src={shieldIcon} alt="logotype" />Security</NavLink>
             <NavLink to="/help" className={handleActive}><img src={helpIcon} alt="logotype"/>Help Centre</NavLink>
-            Dark Mode <ThemeToggleButton />
+            <ThemeToggleButton />
 
             <UserAvatar firstName={'Bazil'} lastName={''} position={'Software Developer'} avatarUrl={imageAvatar} />
         </nav>
