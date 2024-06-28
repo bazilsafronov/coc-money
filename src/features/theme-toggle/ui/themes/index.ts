@@ -1,2 +1,2 @@
-import './_light.sass';
-import './_dark.sass';
+import "./_light.sass";
+import "./_dark.sass";

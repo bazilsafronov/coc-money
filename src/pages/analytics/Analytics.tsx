@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Analytics = () => {
-    return(
-        <>Analytics PAge</>
-    )
-}
+  return <>Analytics PAge</>;
+};
 
 export default Analytics;

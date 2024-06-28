@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Welcome = () => {
-    return(
-        <>Welcome</>
-    )
-}
+  return <>Welcome</>;
+};
 
 export default Welcome;
