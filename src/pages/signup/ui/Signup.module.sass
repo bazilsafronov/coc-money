@@ -1,0 +1,64 @@
+// Переменные
+$form-padding: 20px
+$input-margin: 10px 0
+$button-padding: 10px 20px
+$error-color: red
+
+.page-container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh // Занять всю высоту экрана
+  background-color: #0056b3
+
+.form-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  padding: $form-padding
+  border: 1px solid #ccc
+  border-radius: 8px
+  max-width: 400px
+  color: black
+  width: 100% // Занимать всю доступную ширину контейнера
+  background-color: white // Фоновый цвет формы
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) // Тень вокруг формы
+
+  label
+    display: block
+    margin-bottom: 5px
+    font-weight: bold
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"]
+    width: 100%
+    padding: 8px
+    margin: $input-margin
+    border: 1px solid #ccc
+    border-radius: 4px
+
+  .checkbox-container
+    display: flex
+    align-items: center
+    margin: $input-margin
+
+    input[type="checkbox"]
+      margin-right: 10px
+
+  .error-message
+    color: $error-color
+    margin: $input-margin
+
+  button
+    padding: $button-padding
+    background-color: #007BFF
+    color: white
+    border: none
+    border-radius: 4px
+    cursor: pointer
+    margin-top: 20px
+
+    &:hover
+      background-color: #0056b3

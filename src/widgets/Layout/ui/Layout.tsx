@@ -1,18 +1,17 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '@/widgets/Sidebar/ui/Sidebar';
+import { useAuth } from '@/shared/providers/AuthContext';
 import style from './Layout.module.sass';
 
-interface LayoutProps {
-    children: React.ReactNode;
-}
+const Layout: React.FC = () => {
+    const { user } = useAuth();
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className={style.layout}>
-            <Sidebar />
+            {user && <Sidebar />} {/* Отображение Sidebar только если пользователь авторизован */}
             <main className={style.content}>
-                {children}
-
+                <Outlet /> {/* Используется для рендеринга вложенных маршрутов */}
             </main>
         </div>
     );
