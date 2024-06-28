@@ -27,6 +27,7 @@
     "@storybook/react": "^7.6.17",
     "@storybook/react-webpack5": "^7.6.17",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^6.4.6",
     "@types/chart.js": "^2.9.41",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.2.5",
