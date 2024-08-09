@@ -11,7 +11,7 @@ const Layout: React.FC = () => {
     <div className={style.layout}>
       {user && <Sidebar />}{" "}
       <main className={style.content}>
-        <Outlet /> 
+        <Outlet />
       </main>
     </div>
   );

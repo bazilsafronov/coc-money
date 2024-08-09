@@ -17,7 +17,7 @@ import Help from "@/pages/help";
 import Layout from "@/widgets/Layout/ui/Layout";
 import { useAuth } from "@/shared/providers/AuthContext";
 
-function App() {
+function App ()  {
   const { user } = useAuth();
   const isAuthenticated = !!user;
 
@@ -48,6 +48,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
