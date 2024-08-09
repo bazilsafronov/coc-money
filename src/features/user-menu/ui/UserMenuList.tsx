@@ -8,9 +8,7 @@ const UserMenuList: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
-      navigate("/signup");
-    }
+    if (!user) navigate("/signup");
   }, [user, navigate]);
 
   const handleLogout = () => {

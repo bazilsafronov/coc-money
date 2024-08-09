@@ -10,9 +10,8 @@ const Layout: React.FC = () => {
   return (
     <div className={style.layout}>
       {user && <Sidebar />}{" "}
-      {/* Отображение Sidebar только если пользователь авторизован */}
       <main className={style.content}>
-        <Outlet /> {/* Используется для рендеринга вложенных маршрутов */}
+        <Outlet /> 
       </main>
     </div>
   );

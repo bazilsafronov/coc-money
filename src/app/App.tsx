@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Dashboard from "@/pages/dashboard";
 import Accounts from "@/pages/accounts";
 import Wallet from "@/pages/wallet";
@@ -10,29 +15,38 @@ import Security from "@/pages/security";
 import Signup from "@/pages/signup";
 import Help from "@/pages/help";
 import Layout from "@/widgets/Layout/ui/Layout";
-import { AuthProvider } from "@/shared/providers/AuthContext";
+import { useAuth } from "@/shared/providers/AuthContext";
 
 function App() {
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
+
   return (
-    <React.StrictMode>
-      <Router>
-        <AuthProvider>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="signup" element={<Signup />} />
-              <Route path="/" element={<Welcome />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="accounts" element={<Accounts />} />
-              <Route path="wallet" element={<Wallet />} />
-              <Route path="analytics" element={<Analytics />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="security" element={<Security />} />
-              <Route path="help" element={<Help />} />
-            </Route>
-          </Routes>
-        </AuthProvider>
-      </Router>
-    </React.StrictMode>
+    <Router>
+      <Routes>
+        <Route
+          path="/signup"
+          element={
+            !isAuthenticated ? <Signup /> : <Navigate replace to="/dashboard" />
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            isAuthenticated ? <Dashboard /> : <Navigate replace to="/signup" />
+          }
+        />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Welcome />} />
+          <Route path="accounts" element={<Accounts />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="security" element={<Security />} />
+          <Route path="help" element={<Help />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

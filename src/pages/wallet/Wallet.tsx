@@ -1,7 +1,10 @@
 import React from "react";
 
 const Wallet = () => {
-  return <></>;
+  return <> <h2>Your Wallet</h2>
+
+
+  </>;
 };
 
 export default Wallet;
