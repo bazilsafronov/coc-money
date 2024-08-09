@@ -17,7 +17,7 @@ import Help from "@/pages/help";
 import Layout from "@/widgets/Layout/ui/Layout";
 import { useAuth } from "@/shared/providers/AuthContext";
 
-function App ()  {
+function App() {
   const { user } = useAuth();
   const isAuthenticated = !!user;
 
@@ -30,14 +30,14 @@ function App ()  {
             !isAuthenticated ? <Signup /> : <Navigate replace to="/dashboard" />
           }
         />
+
+        {/* Все защищенные маршруты должны быть вложены в Layout */}
         <Route
-          path="/dashboard"
           element={
-            isAuthenticated ? <Dashboard /> : <Navigate replace to="/signup" />
+            isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />
           }
-        />
-        <Route element={<Layout />}>
-          <Route path="/" element={<Welcome />} />
+        >
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="accounts" element={<Accounts />} />
           <Route path="wallet" element={<Wallet />} />
           <Route path="analytics" element={<Analytics />} />
@@ -45,9 +45,12 @@ function App ()  {
           <Route path="security" element={<Security />} />
           <Route path="help" element={<Help />} />
         </Route>
+
+        {/* Незащищенный маршрут */}
+        <Route path="/" element={<Welcome />} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;

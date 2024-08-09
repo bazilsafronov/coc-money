@@ -9,7 +9,7 @@ const Layout: React.FC = () => {
 
   return (
     <div className={style.layout}>
-      {user && <Sidebar />}{" "}
+      {user && <Sidebar />}
       <main className={style.content}>
         <Outlet />
       </main>

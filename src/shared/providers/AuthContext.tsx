@@ -9,15 +9,18 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<string | null>(() => {
+    return localStorage.getItem("user") || null;
+  });
 
   const register = (username: string, email: string, password: string) => {
-    console.log("User registered:", { username, email, password });
     setUser(username);
+    localStorage.setItem("user", JSON.stringify({ username, email, password }));
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (
