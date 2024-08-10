@@ -1,0 +1,46 @@
+.toggleContainer
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 150px
+  height: 40px
+
+
+.toggle
+  position: relative
+  width: 60px
+  height: 30px
+  border-radius: 50px
+  cursor: pointer
+  transition: background-color 0.3s ease
+
+
+.light
+  background-color: #c4c4c4
+
+
+.dark
+  background-color: #6359E9
+
+
+.toggleThumb
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  width: 20px
+  height: 20px
+  background-color: white
+  border-radius: 50%
+  transition: left 0.3s ease
+
+
+.light .toggleThumb
+  left: 8px
+
+
+.dark .toggleThumb
+  left: 33px
+
+.spanText
+  font-size: 16px
+  padding: 5px

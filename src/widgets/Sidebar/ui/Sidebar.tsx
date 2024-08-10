@@ -14,6 +14,8 @@ import { NavLink } from "react-router-dom";
 import ThemeToggleButton from "../../../features/theme-toggle/ui/ThemeToggleButton";
 import UserAvatar from "@/entities/user/ui/UserAvatar";
 import imageAvatar from "@/shared/icons/avatar.png";
+import moonIcon from "@/shared/icons/moon.svg";
+import styles from "@/features/theme-toggle/ui/ThemeToggleButton.module.sass";
 
 const Sidebar: React.FC = () => {
   const handleActive = ({ isActive }: { isActive: boolean }) =>
@@ -66,7 +68,11 @@ const Sidebar: React.FC = () => {
         <img src={helpIcon} alt="logotype" />
         Help Centre
       </NavLink>
-      <ThemeToggleButton />
+      <div className={s.themeToggle}>
+        <img src={moonIcon} alt="moonIcon" />
+        <span>Dark Mode</span>
+        <ThemeToggleButton />
+      </div>
 
       <UserAvatar
         firstName={"Bazil"}
