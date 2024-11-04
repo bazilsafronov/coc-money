@@ -34,24 +34,20 @@ jobs:
       - name: Build Application
         run: npm run build
 
+      - name: Check if dist folder exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "dist folder does not exist!"
+            exit 1
+          fi
+
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
-          branch: master
+          branch: gh-pages # Убедитесь, что это правильная ветка для развертывания
           folder: dist
-
-      # Собираем Storybook
-      # - name: Build Storybook
-      #   run: npm run build-storybook
-      #
-      # Публикуем Storybook на Github Pages
-      # - name: Deploy Storybook to Github Pages
-      #   uses: JamesIves/github-pages-deploy-action@4.2.1
-      #   with:
-      #     branch: gh-pages
-      #     folder: storybook-static
-      #     commit-message: "Automatically publish Storybook"
+          clean: true # Добавьте этот параметр, чтобы очистить ветку перед развертыванием
 
       - name: Fail on failed tests
-        if: failure() # Используйте встроенную проверку на ошибку
+        if: failure()
         run: exit 1
