@@ -24,27 +24,25 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/signup"
-          element={
-            !isAuthenticated ? <Signup /> : <Navigate replace to="/dashboard" />
-          }
-        />
+        {/*  path="/signup"*/}
+        {/*  element={*/}
+        {/*    !isAuthenticated ? <Signup /> : <Navigate replace to="/dashboard" />*/}
+        {/*  }*/}
+        {/*/>*/}
 
-        {/* Все защищенные маршруты должны быть вложены в Layout */}
-        <Route
-          element={
-            isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />
-          }
-        >
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="accounts" element={<Accounts />} />
-          <Route path="wallet" element={<Wallet />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="security" element={<Security />} />
-          <Route path="help" element={<Help />} />
-        </Route>
+        {/*/!* Все защищенные маршруты должны быть вложены в Layout *!/*/}
+        {/*<Route*/}
+        {/*  element={*/}
+        {/*    isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />*/}
+        {/*  }*/}
+        {/*>*/}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="wallet" element={<Wallet />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="security" element={<Security />} />
+        <Route path="help" element={<Help />} />
 
         {/* Незащищенный маршрут */}
         <Route path="/" element={<Welcome />} />
