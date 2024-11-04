@@ -1,19 +1,19 @@
-import React from "react";
-import AnalyticsCard from "@/entities/analytics-card/ui/AnalyticsCard";
-import ExpenseDisplay from "@/entities/expense-display/ui/ExpenseDisplay";
-import { handIcon, walletIcon } from "@/shared/icons";
-import Transaction from "@/features/transactions/ui/Transaction";
-import styles from "./Dashboard.module.sass";
-import WalletCard from "@/widgets/card-wallet/ui/WalletCard";
-import CategoryChart from "@/features/category/CategoryChart";
+import React from 'react';
+import AnalyticsCard from '@/entities/analytics-card/ui/AnalyticsCard';
+import ExpenseDisplay from '@/entities/expense-display/ui/ExpenseDisplay';
+import { handIcon, walletIcon } from '@/shared/icons';
+import Transaction from '@/features/transactions/ui/Transaction';
+import styles from './Dashboard.module.sass';
+import WalletCard from '@/widgets/card-wallet/ui/WalletCard';
+import CategoryChart from '@/features/category/CategoryChart';
 
 const Dashboard = () => {
   const handleManageCards = () => {
-    console.log("Manage Cards clicked");
+    console.log('Manage Cards clicked');
   };
 
   const handleTransfer = () => {
-    console.log("Transfer clicked");
+    console.log('Transfer clicked');
   };
   return (
     <div className={styles.dashboardContainer}>
@@ -26,21 +26,21 @@ const Dashboard = () => {
         </h1>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "25px",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '25px',
           }}
         >
           <ExpenseDisplay
             imgUrl={walletIcon}
             amount={(632.0).toFixed(3)}
-            text={"Total Income"}
+            text={'Total Income'}
           />
           <ExpenseDisplay
             imgUrl={walletIcon}
             amount={(632.0).toFixed(3)}
-            text={"Total Outcome"}
+            text={'Total Outcome'}
           />
         </div>
         <AnalyticsCard />
