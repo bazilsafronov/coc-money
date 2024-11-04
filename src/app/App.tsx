@@ -26,16 +26,14 @@ function App() {
       <Routes>
         <Route
           path="/signup"
-          element={
-            !isAuthenticated ? <Signup /> : <Navigate replace to="/dashboard" />
-          }
+          element={!isAuthenticated ? <Signup /> : <Navigate replace to="/" />}
         />
         <Route
           element={
             isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />
           }
         >
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="accounts" element={<Accounts />} />
           <Route path="wallet" element={<Wallet />} />
           <Route path="analytics" element={<Analytics />} />
@@ -43,7 +41,7 @@ function App() {
           <Route path="security" element={<Security />} />
           <Route path="help" element={<Help />} />
         </Route>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/welcome" element={<Welcome />} />
       </Routes>
     </Router>
   );

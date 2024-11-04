@@ -1,6 +1,6 @@
-import React from "react";
-import s from "./Sidebar.module.sass";
-import logo from "@/shared/Logo";
+import React from 'react';
+import s from './Sidebar.module.sass';
+import logo from '@/shared/Logo';
 import {
   dashboardIcon,
   userIcon,
@@ -9,42 +9,42 @@ import {
   analyticsIcon,
   shieldIcon,
   helpIcon,
-} from "@/shared/icons/index";
-import { NavLink } from "react-router-dom";
-import ThemeToggleButton from "../../../features/theme-toggle/ui/ThemeToggleButton";
-import UserAvatar from "@/entities/user/ui/UserAvatar";
-import imageAvatar from "@/shared/icons/avatar.png";
-import moonIcon from "@/shared/icons/moon.svg";
-import styles from "@/features/theme-toggle/ui/ThemeToggleButton.module.sass";
+} from '@/shared/icons/index';
+import { NavLink } from 'react-router-dom';
+import ThemeToggleButton from '../../../features/theme-toggle/ui/ThemeToggleButton';
+import UserAvatar from '@/entities/user/ui/UserAvatar';
+import imageAvatar from '@/shared/icons/avatar.png';
+import moonIcon from '@/shared/icons/moon.svg';
+import styles from '@/features/theme-toggle/ui/ThemeToggleButton.module.sass';
 
 const Sidebar: React.FC = () => {
   const handleActive = ({ isActive }: { isActive: boolean }) =>
-    isActive ? s.activeTab : "";
+    isActive ? s.activeTab : '';
   const navItems = [
     {
-      name: "Dashboard",
+      name: 'Dashboard',
       icon: dashboardIcon,
-      path: "/dashboard",
+      path: '/',
     },
     {
-      name: "Settings",
+      name: 'Settings',
       icon: settingsIcon,
-      path: "/settings",
+      path: '/settings',
     },
     {
-      name: "Analytics",
+      name: 'Analytics',
       icon: analyticsIcon,
-      path: "/analytics",
+      path: '/analytics',
     },
     {
-      name: "My Wallet",
+      name: 'My Wallet',
       icon: walletIcon,
-      path: "/wallet",
+      path: '/wallet',
     },
     {
-      name: "Accounts",
+      name: 'Accounts',
       icon: userIcon,
-      path: "/accounts",
+      path: '/accounts',
     },
   ];
   return (
@@ -75,9 +75,9 @@ const Sidebar: React.FC = () => {
       </div>
 
       <UserAvatar
-        firstName={"Bazil"}
-        lastName={""}
-        position={"Software Developer"}
+        firstName={'Bazil'}
+        lastName={''}
+        position={'Software Developer'}
         avatarUrl={imageAvatar}
       />
     </nav>
