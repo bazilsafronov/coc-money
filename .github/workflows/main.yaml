@@ -3,11 +3,11 @@ name: Test, Lint, Build and Deploy on Github Pages
 on:
   push:
     branches: ["master", "main"]
-
   workflow_dispatch:
 
 permissions:
   contents: write
+  deployments: write
 
 jobs:
   build-and-deploy:
@@ -25,38 +25,33 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-
       - name: Install dependencies
         run: npm install
-
 
       - name: Run tests and linter
         run: npm run lint
 
-
       - name: Build Application
         run: npm run build
-
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
-          branch: gh-pages
+          branch: master
           folder: dist
 
-      #      # Собираем Storybook
-      #      - name: Build Storybook
-      #        run: npm run build-storybook
+      # Собираем Storybook
+      # - name: Build Storybook
+      #   run: npm run build-storybook
       #
-      #      # Публикуем Storybook на Github Pages
-      #      - name: Deploy Storybook to Github Pages
-      #        uses: JamesIves/github-pages-deploy-action@4.2.1
-      #        with:
-      #          branch: gh-pages
-      #          folder: storybook-static
-      #          commit-message: "Automatically publish Storybook"
-
+      # Публикуем Storybook на Github Pages
+      # - name: Deploy Storybook to Github Pages
+      #   uses: JamesIves/github-pages-deploy-action@4.2.1
+      #   with:
+      #     branch: gh-pages
+      #     folder: storybook-static
+      #     commit-message: "Automatically publish Storybook"
 
       - name: Fail on failed tests
-        run: |
-          if [ ${{ job.status }} == 'failure' ]; then exit 1; fi;
+        if: failure() # Используйте встроенную проверку на ошибку
+        run: exit 1
