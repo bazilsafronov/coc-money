@@ -4,6 +4,7 @@
   "description": "FinTech App",
   "main": "src/index.tsx",
   "author": "Bazil Studio",
+  "homepage": "https://bazilsafronov.github.io/coc-money/",
   "scripts": {
     "start": "webpack server --mode development",
     "build": "webpack --mode production",
