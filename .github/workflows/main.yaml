@@ -4,7 +4,6 @@ on:
   push:
     branches: ["master", "main"]
 
-  # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
   workflow_dispatch:
 
 permissions:
@@ -30,15 +29,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Запускаем тесты и линтер
+
       - name: Run tests and linter
         run: npm run lint
 
-      # Собираем приложение
+
       - name: Build Application
         run: npm run build
 
-      # Публикуем приложение на Github Pages
+
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
@@ -57,7 +56,7 @@ jobs:
       #          folder: storybook-static
       #          commit-message: "Automatically publish Storybook"
 
-      # Останавливаем выполнение строго при неудачных тестах
+
       - name: Fail on failed tests
         run: |
           if [ ${{ job.status }} == 'failure' ]; then exit 1; fi;
