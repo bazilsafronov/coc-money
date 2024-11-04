@@ -15,32 +15,32 @@ import Security from '@/pages/security';
 import Signup from '@/pages/signup';
 import Help from '@/pages/help';
 import Layout from '@/widgets/Layout/ui/Layout';
-import { useAuth } from '@/shared/providers/AuthContext';
+// import { useAuth } from '@/shared/providers/AuthContext';
 
 function App() {
-  const { user } = useAuth();
-  const isAuthenticated = !!user;
+  // const { user } = useAuth();
+  // const isAuthenticated = !!user;
 
   return (
     <Router>
       <Routes>
-        <Route
-          path="/signup"
-          element={!isAuthenticated ? <Signup /> : <Navigate replace to="/" />}
-        />
-        <Route
-          element={
-            isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />
-          }
-        >
-          <Route path="/" element={<Dashboard />} />
-          <Route path="accounts" element={<Accounts />} />
-          <Route path="wallet" element={<Wallet />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="security" element={<Security />} />
-          <Route path="help" element={<Help />} />
-        </Route>
+        {/*<Route*/}
+        {/*  path="/signup"*/}
+        {/*  element={!isAuthenticated ? <Signup /> : <Navigate replace to="/" />}*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  element={*/}
+        {/*    isAuthenticated ? <Layout /> : <Navigate replace to="/signup" />*/}
+        {/*  }*/}
+        {/*>*/}
+        <Route path="/" element={<Dashboard />} />
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="wallet" element={<Wallet />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="security" element={<Security />} />
+        <Route path="help" element={<Help />} />
+
         <Route path="/welcome" element={<Welcome />} />
       </Routes>
     </Router>
